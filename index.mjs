@@ -16,6 +16,7 @@ app.use(
 app.get("/", async (req, res) => {
   const url = req.query.url;
   const info = await cacheOGInfo(url);
+  console.log(`[GET] ${url}`);
   res.send(info.OGInfo);
 });
 
