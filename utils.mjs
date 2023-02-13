@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import ogs from "open-graph-scraper";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OG_DATA_DIR = path.join(__dirname, "public/ogData");
+const OG_DATA_DIR = path.join("./public/ogData");
 
 export function saveOGInJson(filename, OGInfo) {
   const json_data_file = path.join(OG_DATA_DIR, filename);
