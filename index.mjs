@@ -4,6 +4,8 @@ import cors from "cors";
 import { cacheOGInfo } from "./utils.mjs";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 app.use(
   cors({
@@ -17,6 +19,6 @@ app.get("/", async (req, res) => {
   res.send(info.OGInfo);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`Listening on Port 3000 ...`);
 });
