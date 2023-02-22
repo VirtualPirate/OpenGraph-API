@@ -3,6 +3,13 @@ import cors from "cors";
 
 import { cacheOGInfo } from "./utils.mjs";
 
+import fs from "fs";
+
+fs.chmod("public/ogData", 0o777, (err) => {
+  if (err) throw err;
+  console.log("Folder permissions changed.");
+});
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
