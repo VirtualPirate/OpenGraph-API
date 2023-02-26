@@ -1,14 +1,11 @@
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
 
 import { cacheOGInfo } from "./utils.mjs";
 
-import fs from "fs";
-
-fs.chmod("public/ogData", 0o777, (err) => {
-  if (err) throw err;
-  console.log("Folder permissions changed.");
-});
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,6 +24,20 @@ app.get("/", async (req, res) => {
   res.send(info.OGInfo);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on Port 3000 ...`);
-});
+async function startServer() {
+  mongoose.connect(
+    process.env.MONGO_DATABASE_URL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    () => {
+      console.log("Connected to DataBase");
+      app.listen(PORT, () => {
+        console.log(`Listening on Port 3000 ...`);
+      });
+    }
+  );
+}
+
+startServer();

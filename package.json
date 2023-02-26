@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sudo chmod 777 ./public/ogData && node index.mjs",
+    "start": "node index.mjs",
     "watch": "nodemon index.mjs"
   },
   "keywords": [],
@@ -13,8 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "filenamify": "^5.1.1",
+    "mongoose": "^6.10.0",
     "nodemon": "^2.0.20",
     "open-graph-scraper": "^5.0.2"
   }
