@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mjs",
-    "watch": "nodemon index.mjs"
+    "start": "node src/index.mjs",
+    "watch": "nodemon src/index.mjs"
   },
   "keywords": [],
   "author": "",

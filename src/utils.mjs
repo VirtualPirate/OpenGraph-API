@@ -38,12 +38,13 @@ function isOGDataExpired(OGdata) {
 
 /*
   This function returns parsed Open Graph Information from the database.
-  Or requests the website for OG data, if the database date is not present or expired
+  Or requests the website for OG data, if the database data is not present or expired
 */
 export async function cacheOGInfo(url) {
   let OGInfo = undefined;
   const OGData = await OGDatas.findOne({ url: url });
   // console.log("OGData", OGData);
+
   //If the data exists in database and not expired
   if (OGData && !isOGDataExpired(OGData)) {
     OGInfo = {
@@ -55,11 +56,11 @@ export async function cacheOGInfo(url) {
     };
   }
 
-  // If the cache is expired or not present
+  // If the database data is expired or not present
   else {
     OGInfo = await getOGInfo(url);
 
-    //Creating a mongo doc
+    // Creating a mongo doc if it does not exist or update if exists
     const filter = { url: url };
     const update = {
       siteName: OGInfo.ogSiteName,
