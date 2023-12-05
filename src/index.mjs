@@ -24,6 +24,7 @@ app.get("/", async (req, res) => {
   res.send(info.OGInfo);
 });
 
+// ? This functions connects to MongoDB and then starts listening as a server
 async function startServer() {
   mongoose.connect(
     process.env.MONGO_DATABASE_URL,
