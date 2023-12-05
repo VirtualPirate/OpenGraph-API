@@ -6,13 +6,7 @@ const openGraphSchema = new mongoose.Schema({
   url: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, required: true },
-  dateCreated: { type: Date, default: () => Date.now() },
-
-  expireAt: {
-    type: Date,
-    expires: 11,
-    default: Date.now,
-  },
+  dateCreated: { type: Date, default: () => Date.now(), expires: 11 },
 });
 
 const OGDatas = mongoose.model("OGData", openGraphSchema);
