@@ -26,19 +26,12 @@ app.get("/", async (req, res) => {
 
 // ? This functions connects to MongoDB and then starts listening as a server
 async function startServer() {
-  mongoose.connect(
-    process.env.MONGO_DATABASE_URL,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    () => {
-      console.log("Connected to DataBase");
-      app.listen(PORT, () => {
-        console.log(`Listening on Port 3000 ...`);
-      });
-    }
-  );
+  mongoose.connect(process.env.MONGO_DATABASE_URL).then(() => {
+    console.log("Connected to DataBase");
+    app.listen(PORT, () => {
+      console.log(`Listening on Port 3000 ...`);
+    });
+  });
 }
 
 startServer();
